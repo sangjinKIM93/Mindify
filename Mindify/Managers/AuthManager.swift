@@ -1,0 +1,194 @@
+//
+//  AuthManager.swift
+//  Mindify
+//
+//  Created by 김상진 on 2021/02/18.
+//  Copyright © 2021 kipCalm. All rights reserved.
+//
+
+import Foundation
+
+final class AuthManager {
+    static let shared = AuthManager()
+    
+    struct Constants {
+        static let clientID = "a77eb1818b4c4a0d80287f5328b5e90d"
+        static let clientSecret = "1134766b0f014455aefc22cf0964e339"
+        static let tokenAPIURL = "https://accounts.spotify.com/api/token"
+        static let redirectURI = "https://www.iosacademy.io"
+        static let scopes = "user-read-private%20playlist-modify-public%20playlist-read-private%20playlist-modify-private%20user-follow-read%20user-library-modify%20user-library-read%20user-read-email"
+    }
+    
+    
+    public var signInURL: URL? {
+        
+        let base = "https://accounts.spotify.com/authorize"
+        let string = "\(base)?response_type=code&client_id=\(Constants.clientID)&scope=\(Constants.scopes)&redirect_uri=\(Constants.redirectURI)&show_dialog=TRUE"
+        return URL(string: string)
+    }
+    
+    private init() {}
+    
+    var isSignedIn: Bool {
+        return accessToken != nil
+    }
+    
+    private var refreshingToken = false
+    
+    private var accessToken: String? {
+        return UserDefaults.standard.string(forKey: "access_token")
+    }
+    
+    private var refreshToken: String? {
+        return UserDefaults.standard.string(forKey: "refresh_token")
+    }
+    
+    private var tokenExpirationDate: Date? {
+        return UserDefaults.standard.object(forKey: "expirationDate") as? Date
+    }
+    
+    private var shouldRefreshToken: Bool {
+        guard let expirationDate = tokenExpirationDate else {
+            return false 
+        }
+        let currentDate = Date()
+        let fiveMinutes: TimeInterval = 300
+        
+        return currentDate.addingTimeInterval(fiveMinutes) >= expirationDate
+    }
+    
+    public func exchangeCodeForToken(
+        code: String,
+        completion: @escaping ((Bool) -> Void)
+    ) {
+        // GET Token
+        guard let url = URL(string: Constants.tokenAPIURL) else {
+            return
+        }
+        
+        var component = URLComponents()
+        component.queryItems = [
+            URLQueryItem(name: "grant_type", value: "authorization_code"),
+            URLQueryItem(name: "code", value: code),
+            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
+        ]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpBody = component.query?.data(using: .utf8)
+        
+        let basicToken = Constants.clientID + ":" + Constants.clientSecret
+        let data = basicToken.data(using: .utf8)
+        guard let base64String = data?.base64EncodedString() else {
+            print("Failure to get base64")
+            completion(false)
+            return
+        }
+        request.setValue("Basic \(base64String)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
+            guard let data = data, error == nil else {
+                completion(false)
+                return
+            }
+            
+            do {
+                let result = try JSONDecoder().decode(AuthResponse.self, from: data)
+                // 2-1 토큰 저장
+                self?.cacheToken(result: result)
+                completion(true)
+            } catch {
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
+        task.resume()
+    }
+    
+    private var onRefreshBlocks = [((String)->Void)]()  // refreshToken 중이라 수행하지 못 했던 API Call 을 넣어뒀다가 끝나면
+    
+    /// API Call에 사용될 valid token 을 공급한다.
+    public func withValidToken(completion: @escaping (String) -> Void) {
+        guard !refreshingToken else {
+            onRefreshBlocks.append(completion)
+            return
+        }
+        
+        if shouldRefreshToken {
+            refreshIfNeeded { [weak self] success in
+                if let token = self?.accessToken, success {
+                    completion(token)
+                }
+            }
+        } else if let token = accessToken {
+            completion(token)
+        }
+    }
+    
+    public func refreshIfNeeded(completion: ((Bool) -> Void)?) {
+        guard !refreshingToken else { return }
+        
+        guard shouldRefreshToken else {
+            completion?(true)
+            return
+        }
+        
+        guard let refreshToken = self.refreshToken else { return }
+        
+        // refresh Token
+        guard let url = URL(string: Constants.tokenAPIURL) else {
+            return
+        }
+        
+        refreshingToken = true  // 최신화 되는 중에 최신화 되는 것을 막는 flag
+        
+        var component = URLComponents()
+        component.queryItems = [
+            URLQueryItem(name: "grant_type", value: "refresh_token"),
+            URLQueryItem(name: "refresh_token", value: refreshToken),
+        ]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpBody = component.query?.data(using: .utf8)
+        
+        let basicToken = Constants.clientID + ":" + Constants.clientSecret
+        let data = basicToken.data(using: .utf8)
+        guard let base64String = data?.base64EncodedString() else {
+            print("Failure to get base64")
+            completion?(false)
+            return
+        }
+        request.setValue("Basic \(base64String)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
+            self?.refreshingToken = false
+            guard let data = data, error == nil else {
+                completion?(false)
+                return
+            }
+            
+            do {
+                let result = try JSONDecoder().decode(AuthResponse.self, from: data)
+                self?.onRefreshBlocks.forEach{ $0(result.access_token) }    // refreshingToken 중이라 막혔던 API Call 들을 다시 요청
+                self?.onRefreshBlocks.removeAll()
+                self?.cacheToken(result: result)
+                completion?(true)
+            } catch {
+                print(error.localizedDescription)
+                completion?(false)
+            }
+        }
+        task.resume()
+    }
+    
+    private func cacheToken(result: AuthResponse) {
+        UserDefaults.standard.setValue(result.access_token, forKey: "access_token")
+        if let refresh_token = result.refresh_token {
+            UserDefaults.standard.setValue(refresh_token, forKey: "refresh_token")
+        }
+        UserDefaults.standard.setValue(Date().addingTimeInterval(TimeInterval(result.expires_in)), forKey: "expirationDate")    // 현재 날짜에서 expires_in 만큼 더해준다.
+    }
+}

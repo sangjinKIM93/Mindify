@@ -3,29 +3,87 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		482B55ED25DE306200955FAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B55EC25DE306200955FAF /* AppDelegate.swift */; };
 		482B55EF25DE306200955FAF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B55EE25DE306200955FAF /* SceneDelegate.swift */; };
-		482B55F125DE306200955FAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B55F025DE306200955FAF /* ViewController.swift */; };
-		482B55F425DE306200955FAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482B55F225DE306200955FAF /* Main.storyboard */; };
+		482B55F125DE306200955FAF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B55F025DE306200955FAF /* HomeViewController.swift */; };
 		482B55F725DE306200955FAF /* Mindify.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 482B55F525DE306200955FAF /* Mindify.xcdatamodeld */; };
 		482B55F925DE306300955FAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482B55F825DE306300955FAF /* Assets.xcassets */; };
 		482B55FC25DE306300955FAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482B55FA25DE306300955FAF /* LaunchScreen.storyboard */; };
+		482B560925DE338B00955FAF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B560825DE338B00955FAF /* TabBarViewController.swift */; };
+		482B560B25DE33B100955FAF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B560A25DE33B100955FAF /* SearchViewController.swift */; };
+		482B560D25DE33C500955FAF /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B560C25DE33C500955FAF /* LibraryViewController.swift */; };
+		482B561125DE340100955FAF /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B561025DE340100955FAF /* AuthViewController.swift */; };
+		482B561325DE340A00955FAF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B561225DE340A00955FAF /* WelcomeViewController.swift */; };
+		482B561525DE341600955FAF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B561425DE341600955FAF /* SettingsViewController.swift */; };
+		482B561725DE342100955FAF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B561625DE342100955FAF /* ProfileViewController.swift */; };
+		482B561925DE342D00955FAF /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B561825DE342D00955FAF /* PlayerViewController.swift */; };
+		482B561B25DE344500955FAF /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B561A25DE344500955FAF /* PlaylistViewController.swift */; };
+		482B561D25DE346300955FAF /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B561C25DE346300955FAF /* SearchResultsViewController.swift */; };
+		482B561F25DE348600955FAF /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B561E25DE348600955FAF /* AuthManager.swift */; };
+		482B562125DE349000955FAF /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B562025DE349000955FAF /* APICaller.swift */; };
+		482B562325DE349B00955FAF /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B562225DE349B00955FAF /* HapticsManager.swift */; };
+		482B562625DE34C800955FAF /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B562525DE34C800955FAF /* Playlist.swift */; };
+		482B562825DE34D200955FAF /* AudioTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B562725DE34D200955FAF /* AudioTrack.swift */; };
+		482B562A25DE34D900955FAF /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B562925DE34D900955FAF /* Artist.swift */; };
+		482B562C25DE34E900955FAF /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B562B25DE34E900955FAF /* UserProfile.swift */; };
+		485F6F6425F66C8300A3BF44 /* NewReleaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485F6F6325F66C8300A3BF44 /* NewReleaseCollectionViewCell.swift */; };
+		485F6F6725F66C9B00A3BF44 /* FeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485F6F6625F66C9B00A3BF44 /* FeaturedCollectionViewCell.swift */; };
+		485F6F6A25F66CBC00A3BF44 /* RecommendedTracksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485F6F6925F66CBC00A3BF44 /* RecommendedTracksCollectionViewCell.swift */; };
+		48885A0525F11AAA006AABCE /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A0425F11AAA006AABCE /* SettingsModels.swift */; };
+		489E78F725F360EC00216F4B /* NewReleasesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E78F625F360EC00216F4B /* NewReleasesResponse.swift */; };
+		489E78FA25F3616700216F4B /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E78F925F3616700216F4B /* APIImage.swift */; };
+		489E78FE25F3661200216F4B /* FeaturedPlaylistsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E78FD25F3661200216F4B /* FeaturedPlaylistsResponse.swift */; };
+		489E790125F36DB500216F4B /* RecommendedGEnresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E790025F36DB500216F4B /* RecommendedGEnresResponse.swift */; };
+		489E790425F3732300216F4B /* RecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E790325F3732300216F4B /* RecommendationsResponse.swift */; };
+		48B8427D25DE448500DD072B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B8427C25DE448500DD072B /* Extensions.swift */; };
+		48D51FA225E220F700D35276 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D51FA125E220F700D35276 /* AuthResponse.swift */; };
+		CDC500DDF6F21B8C54576B29 /* Pods_Mindify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A86AEB0CB62C7F3264829DF8 /* Pods_Mindify.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FBFE0E5EB7B685610570395 /* Pods-Mindify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mindify.debug.xcconfig"; path = "Target Support Files/Pods-Mindify/Pods-Mindify.debug.xcconfig"; sourceTree = "<group>"; };
 		482B55E925DE306200955FAF /* Mindify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mindify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		482B55EC25DE306200955FAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		482B55EE25DE306200955FAF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		482B55F025DE306200955FAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		482B55F325DE306200955FAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		482B55F025DE306200955FAF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		482B55F625DE306200955FAF /* Mindify.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mindify.xcdatamodel; sourceTree = "<group>"; };
 		482B55F825DE306300955FAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		482B55FB25DE306300955FAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		482B55FD25DE306300955FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		482B560825DE338B00955FAF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		482B560A25DE33B100955FAF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		482B560C25DE33C500955FAF /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		482B561025DE340100955FAF /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		482B561225DE340A00955FAF /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		482B561425DE341600955FAF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		482B561625DE342100955FAF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		482B561825DE342D00955FAF /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		482B561A25DE344500955FAF /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		482B561C25DE346300955FAF /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		482B561E25DE348600955FAF /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		482B562025DE349000955FAF /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		482B562225DE349B00955FAF /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		482B562525DE34C800955FAF /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		482B562725DE34D200955FAF /* AudioTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrack.swift; sourceTree = "<group>"; };
+		482B562925DE34D900955FAF /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		482B562B25DE34E900955FAF /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		485F6F6325F66C8300A3BF44 /* NewReleaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		485F6F6625F66C9B00A3BF44 /* FeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
+		485F6F6925F66CBC00A3BF44 /* RecommendedTracksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTracksCollectionViewCell.swift; sourceTree = "<group>"; };
+		48885A0425F11AAA006AABCE /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
+		489E78F625F360EC00216F4B /* NewReleasesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesResponse.swift; sourceTree = "<group>"; };
+		489E78F925F3616700216F4B /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
+		489E78FD25F3661200216F4B /* FeaturedPlaylistsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistsResponse.swift; sourceTree = "<group>"; };
+		489E790025F36DB500216F4B /* RecommendedGEnresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedGEnresResponse.swift; sourceTree = "<group>"; };
+		489E790325F3732300216F4B /* RecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponse.swift; sourceTree = "<group>"; };
+		48B8427C25DE448500DD072B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		48D51FA125E220F700D35276 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		73765751B52E8AAC9BC91314 /* Pods-Mindify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mindify.release.xcconfig"; path = "Target Support Files/Pods-Mindify/Pods-Mindify.release.xcconfig"; sourceTree = "<group>"; };
+		A86AEB0CB62C7F3264829DF8 /* Pods_Mindify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mindify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDC500DDF6F21B8C54576B29 /* Pods_Mindify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +103,8 @@
 			children = (
 				482B55EB25DE306200955FAF /* Mindify */,
 				482B55EA25DE306200955FAF /* Products */,
+				A3AC21110131178E875E3A44 /* Pods */,
+				9451030D5F547781B579165B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +119,132 @@
 		482B55EB25DE306200955FAF /* Mindify */ = {
 			isa = PBXGroup;
 			children = (
-				482B55EC25DE306200955FAF /* AppDelegate.swift */,
-				482B55EE25DE306200955FAF /* SceneDelegate.swift */,
-				482B55F025DE306200955FAF /* ViewController.swift */,
-				482B55F225DE306200955FAF /* Main.storyboard */,
-				482B55F825DE306300955FAF /* Assets.xcassets */,
-				482B55FA25DE306300955FAF /* LaunchScreen.storyboard */,
+				482B562425DE34B800955FAF /* Model */,
+				482B560725DE318E00955FAF /* Resources */,
+				482B560625DE318600955FAF /* Managers */,
+				482B560525DE318200955FAF /* View */,
+				482B560425DE317800955FAF /* ViewModel */,
+				482B560325DE316D00955FAF /* Controller */,
 				482B55FD25DE306300955FAF /* Info.plist */,
 				482B55F525DE306200955FAF /* Mindify.xcdatamodeld */,
 			);
 			path = Mindify;
+			sourceTree = "<group>";
+		};
+		482B560325DE316D00955FAF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				482B560F25DE33EC00955FAF /* Other */,
+				482B560E25DE33CF00955FAF /* Core */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		482B560425DE317800955FAF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		482B560525DE318200955FAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				485F6F6225F66C5E00A3BF44 /* Browse */,
+				482B55FA25DE306300955FAF /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		482B560625DE318600955FAF /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				482B561E25DE348600955FAF /* AuthManager.swift */,
+				482B562025DE349000955FAF /* APICaller.swift */,
+				482B562225DE349B00955FAF /* HapticsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		482B560725DE318E00955FAF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				482B55EC25DE306200955FAF /* AppDelegate.swift */,
+				482B55EE25DE306200955FAF /* SceneDelegate.swift */,
+				482B55F825DE306300955FAF /* Assets.xcassets */,
+				48B8427C25DE448500DD072B /* Extensions.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		482B560E25DE33CF00955FAF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				482B55F025DE306200955FAF /* HomeViewController.swift */,
+				482B560825DE338B00955FAF /* TabBarViewController.swift */,
+				482B560A25DE33B100955FAF /* SearchViewController.swift */,
+				482B560C25DE33C500955FAF /* LibraryViewController.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		482B560F25DE33EC00955FAF /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				482B561025DE340100955FAF /* AuthViewController.swift */,
+				482B561225DE340A00955FAF /* WelcomeViewController.swift */,
+				482B561425DE341600955FAF /* SettingsViewController.swift */,
+				482B561625DE342100955FAF /* ProfileViewController.swift */,
+				482B561825DE342D00955FAF /* PlayerViewController.swift */,
+				482B561A25DE344500955FAF /* PlaylistViewController.swift */,
+				482B561C25DE346300955FAF /* SearchResultsViewController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		482B562425DE34B800955FAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				482B562525DE34C800955FAF /* Playlist.swift */,
+				482B562725DE34D200955FAF /* AudioTrack.swift */,
+				482B562925DE34D900955FAF /* Artist.swift */,
+				482B562B25DE34E900955FAF /* UserProfile.swift */,
+				48D51FA125E220F700D35276 /* AuthResponse.swift */,
+				48885A0425F11AAA006AABCE /* SettingsModels.swift */,
+				489E78F625F360EC00216F4B /* NewReleasesResponse.swift */,
+				489E78F925F3616700216F4B /* APIImage.swift */,
+				489E78FD25F3661200216F4B /* FeaturedPlaylistsResponse.swift */,
+				489E790025F36DB500216F4B /* RecommendedGEnresResponse.swift */,
+				489E790325F3732300216F4B /* RecommendationsResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		485F6F6225F66C5E00A3BF44 /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				485F6F6325F66C8300A3BF44 /* NewReleaseCollectionViewCell.swift */,
+				485F6F6625F66C9B00A3BF44 /* FeaturedCollectionViewCell.swift */,
+				485F6F6925F66CBC00A3BF44 /* RecommendedTracksCollectionViewCell.swift */,
+			);
+			path = Browse;
+			sourceTree = "<group>";
+		};
+		9451030D5F547781B579165B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A86AEB0CB62C7F3264829DF8 /* Pods_Mindify.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3AC21110131178E875E3A44 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1FBFE0E5EB7B685610570395 /* Pods-Mindify.debug.xcconfig */,
+				73765751B52E8AAC9BC91314 /* Pods-Mindify.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +254,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 482B560025DE306300955FAF /* Build configuration list for PBXNativeTarget "Mindify" */;
 			buildPhases = (
+				18D7BC30CD09E138D8E9B5E0 /* [CP] Check Pods Manifest.lock */,
 				482B55E525DE306200955FAF /* Sources */,
 				482B55E625DE306200955FAF /* Frameworks */,
 				482B55E725DE306200955FAF /* Resources */,
+				BDE59A0CF0051974F2A4BB45 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,35 +309,96 @@
 			files = (
 				482B55FC25DE306300955FAF /* LaunchScreen.storyboard in Resources */,
 				482B55F925DE306300955FAF /* Assets.xcassets in Resources */,
-				482B55F425DE306200955FAF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18D7BC30CD09E138D8E9B5E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mindify-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDE59A0CF0051974F2A4BB45 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mindify/Pods-Mindify-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mindify/Pods-Mindify-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mindify/Pods-Mindify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		482B55E525DE306200955FAF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				482B561325DE340A00955FAF /* WelcomeViewController.swift in Sources */,
+				485F6F6425F66C8300A3BF44 /* NewReleaseCollectionViewCell.swift in Sources */,
+				482B562825DE34D200955FAF /* AudioTrack.swift in Sources */,
+				482B562C25DE34E900955FAF /* UserProfile.swift in Sources */,
+				482B560B25DE33B100955FAF /* SearchViewController.swift in Sources */,
+				489E790125F36DB500216F4B /* RecommendedGEnresResponse.swift in Sources */,
+				48885A0525F11AAA006AABCE /* SettingsModels.swift in Sources */,
 				482B55F725DE306200955FAF /* Mindify.xcdatamodeld in Sources */,
-				482B55F125DE306200955FAF /* ViewController.swift in Sources */,
+				489E78FA25F3616700216F4B /* APIImage.swift in Sources */,
+				482B561525DE341600955FAF /* SettingsViewController.swift in Sources */,
+				489E78F725F360EC00216F4B /* NewReleasesResponse.swift in Sources */,
+				482B561F25DE348600955FAF /* AuthManager.swift in Sources */,
+				482B561B25DE344500955FAF /* PlaylistViewController.swift in Sources */,
+				482B561D25DE346300955FAF /* SearchResultsViewController.swift in Sources */,
+				48B8427D25DE448500DD072B /* Extensions.swift in Sources */,
+				482B562125DE349000955FAF /* APICaller.swift in Sources */,
+				482B562325DE349B00955FAF /* HapticsManager.swift in Sources */,
+				482B55F125DE306200955FAF /* HomeViewController.swift in Sources */,
+				482B561925DE342D00955FAF /* PlayerViewController.swift in Sources */,
+				482B562625DE34C800955FAF /* Playlist.swift in Sources */,
 				482B55ED25DE306200955FAF /* AppDelegate.swift in Sources */,
+				482B561725DE342100955FAF /* ProfileViewController.swift in Sources */,
+				485F6F6A25F66CBC00A3BF44 /* RecommendedTracksCollectionViewCell.swift in Sources */,
+				482B561125DE340100955FAF /* AuthViewController.swift in Sources */,
+				482B560D25DE33C500955FAF /* LibraryViewController.swift in Sources */,
+				489E78FE25F3661200216F4B /* FeaturedPlaylistsResponse.swift in Sources */,
+				482B560925DE338B00955FAF /* TabBarViewController.swift in Sources */,
+				482B562A25DE34D900955FAF /* Artist.swift in Sources */,
+				48D51FA225E220F700D35276 /* AuthResponse.swift in Sources */,
 				482B55EF25DE306200955FAF /* SceneDelegate.swift in Sources */,
+				489E790425F3732300216F4B /* RecommendationsResponse.swift in Sources */,
+				485F6F6725F66C9B00A3BF44 /* FeaturedCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		482B55F225DE306200955FAF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				482B55F325DE306200955FAF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		482B55FA25DE306300955FAF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -286,6 +526,7 @@
 		};
 		482B560125DE306300955FAF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FBFE0E5EB7B685610570395 /* Pods-Mindify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -303,6 +544,7 @@
 		};
 		482B560225DE306300955FAF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73765751B52E8AAC9BC91314 /* Pods-Mindify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
