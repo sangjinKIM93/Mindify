@@ -42,7 +42,7 @@ final class APICaller {
     }
     
     public func getNewRelease(completion: @escaping (Result<NewReleasesResponse, Error>) -> Void) {
-        createRequest(with: URL(string: Constants.baseAPIURL + "/browse/new-releases?limit=1"),
+        createRequest(with: URL(string: Constants.baseAPIURL + "/browse/new-releases?limit=50"),
                       type: .GET
         ) { baseRequest in
             let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
